@@ -1,7 +1,7 @@
 import React from 'react';
 import {GoogleLogin, GoogleLogout, GoogleAuth} from 'react-google-login';
 import { Navigate } from "react-router-dom";
-import logo from '../images/Koa-1.webp';
+import logo from '../images/KOA_only_White.PNG';
 import "../styles/SignOn.css"
 
 class SignOn extends React.Component {
