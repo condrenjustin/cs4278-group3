@@ -29,7 +29,7 @@ class NavBar extends React.Component {
                 <Navbar 
                     collapseOnSelect
                     expand="lg" 
-                    bg='primary' 
+                    bg='dark' 
                     variant = 'dark' 
                     fixed='top'
                     className="ms-auto color-nav" 

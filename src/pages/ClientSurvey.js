@@ -3,8 +3,7 @@ import NavBar from '../components/NavBar';
 
 class VIZ extends React.Component {
     render() {
-      return <iframe src="https://public.domo.com/embed/pages/M8lBB" width="1248" height="1620" marginheight="0" marginwidth="0" frameborder="0"></iframe>
-    }
+    return <iframe class="airtable-embed" src="https://airtable.com/embed/shrVG86TmxXW4oF3M?backgroundColor=purple" width={1000} height={533} ></iframe>    }
   }
 
 class ClientSurvey extends React.Component {
