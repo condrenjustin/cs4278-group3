@@ -21,6 +21,14 @@ class NavBar extends React.Component {
         });
     }
 
+    insertLinks = () =>{
+        if(this.props.employee){
+            return(<Nav.Item><Nav.Link href="/client-database">Client Database</Nav.Link> </Nav.Item>);
+        } else {
+            return(<Nav.Item><Nav.Link href="/client-survey">Survey</Nav.Link> </Nav.Item>);
+        }
+    }
+
     render(){
         return(
             <div>
@@ -41,10 +49,9 @@ class NavBar extends React.Component {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="justify-content-end" style={{ flex: 1}}>
-                                <Nav.Item><Nav.Link href="/choreboard">Account</Nav.Link> </Nav.Item>
-                                <Nav.Item><Nav.Link href="/messageboard">Client Database</Nav.Link> </Nav.Item>
-                                <Nav.Item><Nav.Link href="/bills">Survey</Nav.Link> </Nav.Item>
-                                <Nav.Item><Nav.Link href="/profile">Contact Us</Nav.Link> </Nav.Item>
+                                <Nav.Item><Nav.Link href="/">Account</Nav.Link> </Nav.Item>
+                                {this.insertLinks()}
+                                <Nav.Item><Nav.Link href="/">Contact Us</Nav.Link> </Nav.Item>
                                 <Nav.Item style={{marginLeft: "20px"}}>
                                     <GoogleLogout
                                         clientId="1075606334020-sdhvje80qvau18224tlqfb0g1gb5dqeb.apps.googleusercontent.com"

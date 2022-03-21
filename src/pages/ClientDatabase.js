@@ -13,7 +13,7 @@ class ClientDatabase extends React.Component {
     render(){
         return(
             <div>
-                <NavBar />
+                <NavBar employee={true} />
                 <h1 style={{color:"#ffffff"}}>Client Database</h1>
                 <div style={{
                     display: 'flex',
