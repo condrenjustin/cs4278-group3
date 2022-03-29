@@ -1,7 +1,5 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
-import ReactDOM from "react-dom";
-import Center from 'react-center'
 
 class DB extends React.Component {
   render() {

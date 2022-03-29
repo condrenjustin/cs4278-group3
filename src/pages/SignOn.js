@@ -68,7 +68,7 @@ class SignOn extends React.Component {
       if(this.state.email.includes("@koacore")){
        nav = (<Navigate to="/client-database" replace={true} />);
       } else {
-       nav =  (<Navigate to="/client-survey" replace={true} />);
+       nav =  (<Navigate to="/client-landing" replace={true} />);
       }
     }
     
