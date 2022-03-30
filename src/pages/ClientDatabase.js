@@ -1,8 +1,13 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 
+/**
+ * The client database page is meant to serve as a starting point for sales reps to send emails to existing and perspective clients
+ */
+
 class DB extends React.Component {
   render() {
+      /** Client database imported from airtable */
     return <iframe src="https://airtable.com/embed/shrdx2nlN1yXf8LAW?backgroundColor=purple&viewControls=on" width={1000} height={533} />;
   }
 }

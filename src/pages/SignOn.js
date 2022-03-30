@@ -4,6 +4,10 @@ import { Navigate } from "react-router-dom";
 import logo from '../images/KOA_only_White.PNG';
 import "../styles/SignOn.css"
 
+/** The sign on page makes users sign in with Google SSO
+ * Users are redirected based on whether they have a koacore email or not
+ */
+
 class SignOn extends React.Component {
   state = {
     id:"",
