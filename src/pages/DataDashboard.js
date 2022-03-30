@@ -1,6 +1,8 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 
+/** The data dashboard page ... */
+
 class VIZ extends React.Component {
     render() {
     return }

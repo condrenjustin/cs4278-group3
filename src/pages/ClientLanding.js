@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import { createTheme } from '@mui/material/styles';
 
+/**
+ * The client landing page is the first page that clients see after logging in
+ * It will present some information, and then ask them if they are looking to source supplies or purcahse safety management
+ * They will be redirected to the appropriate page based on their decision
+ */
+
 class ClientLanding extends React.Component {
     render(){
         return(
