@@ -7,6 +7,7 @@ import ClientSurvey from './pages/ClientSurvey';
 import DataDashboard from './pages/DataDashboard';
 import ClientLanding from './pages/ClientLanding';
 import TradeLanding from './pages/TradeLanding';
+import Calendar from './pages/Calendar';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/data-dashboard' element={<DataDashboard/>} />
         <Route path='/client-landing' element={<ClientLanding/>} />
         <Route path='/trade' element={<TradeLanding/>} />
+        <Route path='/calendar' element={<Calendar/>} />
       </Routes>
     </BrowserRouter>
     </div>
