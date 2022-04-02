@@ -85,6 +85,9 @@ class SignOn extends React.Component {
         <div>
             <GoogleLogin
               clientId="1075606334020-sdhvje80qvau18224tlqfb0g1gb5dqeb.apps.googleusercontent.com"
+              discoveryDocs={["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"]}
+              scope='https://www.googleapis.com/auth/calendar.events'
+              key='AIzaSyDi6f8GTovPHez69kp77CvTSAEzSYBM__Q'
               buttonText="Continue with Google"
               onSuccess={this.onSignIn}
               onFailure={this.failLog}
@@ -92,7 +95,7 @@ class SignOn extends React.Component {
               isSignedIn={true}
               theme="dark"
               width="200"
-
+              className='google-button'
             />
             {nav}
         </div>

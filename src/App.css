@@ -39,4 +39,11 @@
 
 body{
   background-color: #004225 !important;
+  font-family: Tahoma, Arial, Helvetica, sans-serif, Roboto !important;
+  font-weight: bold !important;
+}
+
+.google-button{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-weight: bold !important; /* This does not seem to be working */
 }

@@ -23,7 +23,12 @@ class NavBar extends React.Component {
 
     insertLinks = () =>{
         if(this.props.employee){
-            return(<Nav.Item><Nav.Link href="/client-database">Client Database</Nav.Link> </Nav.Item>);
+            return(
+                <>
+                    <Nav.Item><Nav.Link href="/client-database">Client Database</Nav.Link> </Nav.Item>
+                    <Nav.Item><Nav.Link href="/calendar">Calendar</Nav.Link> </Nav.Item>
+                </>
+            );
         } else {
             return(<Nav.Item><Nav.Link href="/client-survey">Survey</Nav.Link> </Nav.Item>);
         }
@@ -58,6 +63,7 @@ class NavBar extends React.Component {
                                         buttonText="Log Out"
                                         onLogoutSuccess={this.logout}
                                         onFailure={this.failLog}
+                                        className='google-button'
                                     >
                                     </GoogleLogout>
                                 </Nav.Item>
