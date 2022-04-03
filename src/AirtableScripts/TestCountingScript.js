@@ -1,4 +1,4 @@
-// This script is for
+// This script is for counting tests given for statistics purposes
 let table_1 = base.getTable('Master List');
 let tests = base.getTable("Attendees");
 let notCounted = tests.getView("Not Counted attendees");

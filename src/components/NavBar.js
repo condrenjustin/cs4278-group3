@@ -6,23 +6,34 @@ import logo from '../images/Koa-1.webp';
 
 class NavBar extends React.Component {
     state = {
-        logOut: null
+        logOut: null // assign when the user logs out so that we can navigate back to the SignOn screen
     }
 
+    /**
+     * log an error if logout is unsuccessful
+     * @param {error} response The error that caused the failure
+     */
     failLog(response){
         console.log("Failed");
         console.log(response);
     }
     
+    /**
+     * On success, we navigate back to the SignOn page
+     */
     logout = async() => {
         console.log("Logout called");
         this.setState({
-            logOut: (<Navigate to="/" replace={true} />)
+            logOut: (<Navigate to="/" replace={true} />) // Rendering this component navigates to SignOn.js
         });
     }
 
+    /**
+     * Add the appropriate links to the Navbar based on whether the user is an employee or client
+     * @returns Navbar links to render
+     */
     insertLinks = () =>{
-        if(this.props.employee){
+        if(this.props.employee){ // set employee to true if the user is an employee when calling this component
             return(
                 <>
                     <Nav.Item><Nav.Link href="/client-database">Client Database</Nav.Link> </Nav.Item>
@@ -34,6 +45,10 @@ class NavBar extends React.Component {
         }
     }
 
+    /**
+     * Component hook to render a page
+     * @returns page to render
+     */
     render(){
         return(
             <div>

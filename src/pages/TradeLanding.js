@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 
 /**
- * The trade landing page ... 
+ * Landing page for clients interested in trade services 
  */
  class SurveyTrade extends React.Component {
     render() {

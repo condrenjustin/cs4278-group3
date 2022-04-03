@@ -9,6 +9,7 @@ import "../styles/SignOn.css"
  */
 
 class SignOn extends React.Component {
+  // store users Google Account info
   state = {
     id:"",
     name:"",
@@ -16,6 +17,10 @@ class SignOn extends React.Component {
     email:""
   }
 
+  /**
+   * On successful sign in, get the user's information
+   * @param {GoogleUser} googleUser 
+   */
   onSignIn = async(googleUser) => {
     var profile = googleUser.getBasicProfile();
 
@@ -32,11 +37,18 @@ class SignOn extends React.Component {
     })
   }
 
+  /**
+   * log an error if logout is unsuccessful
+   * @param {error} response The error that caused the failure
+   */
   failLog(response){
     console.log("Failed");
     console.log(response);
   }
 
+  /**
+   * On success, we reset the state
+   */
   logout = async() => {
     console.log("Logout called");
     this.setState({
@@ -47,8 +59,12 @@ class SignOn extends React.Component {
     });
   }
 
+  /**
+   * Component hook to render a page
+   * @returns page to render
+   */
   render() {
-    // let info = null; // to display info, uncomment code in this part and add {info} to the return()
+    // let info = null; // to display info, uncomment this and the block below and add {info} to the return()
     let nav = null;
     if(this.state.id !== ""){
       /*
@@ -69,6 +85,7 @@ class SignOn extends React.Component {
       </div>)
       */
 
+      // navigate to client or employee pages based on email extension
       if(this.state.email.includes("@koacore")){
        nav = (<Navigate to="/client-database" replace={true} />);
       } else {

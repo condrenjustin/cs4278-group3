@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 import Airtable from 'airtable';
-/** The data dashboard page ... */
+/** The data dashboard page. Displays statistics for KOACORE business relevant to the client */
 
 
 

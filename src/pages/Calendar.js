@@ -38,34 +38,48 @@ class ACTCAL extends React.Component {
 class Calendar extends React.Component {
 
   state = {
+    //google info
     clientId: "",
     apiKey: "",
     discoveryDocs: [],
     scope: "",
-    options: [],
-    selectedOptions: [],
-    date: '',
-    openForm: false,
+
+    // state for Gcal form
+    options: [], // list of clients that a user could be reminded about
+    selectedOptions: [], // clients currently selected by user
+    date: '', // date the user should be reminded
+    openForm: false, // state to see if the form should be visible
     error: ''
   }
 
+  /**
+   * Functoin called on initial load it initialize state
+   */
   componentDidMount = async() => {
 
     // get the data from airtable then assign it to this.state.options
     this.getData().then((arr) =>{
       this.setState({
         options: arr,
+
+        // google api information
         clientId: "1075606334020-sdhvje80qvau18224tlqfb0g1gb5dqeb.apps.googleusercontent.com",
         apiKey: "AIzaSyDi6f8GTovPHez69kp77CvTSAEzSYBM__Q",
         discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
         scope: "https://www.googleapis.com/auth/calendar.events",
       });
     }).then(()=>{
-      console.log("options: ", this.state.options); // <-- this is defined
-      console.log(this.state.options[0]); // WHY IS THIS UNDEFINED??? WTF
+
+      // debugging
+      console.log("options: ", this.state.options);
+      console.log(this.state.options[0]); 
     })
   }
 
+  /**
+   * Gets the required data from the database
+   * @returns An array of strings with name, org, and email of all clients in the db
+   */
   getData = async() => {
     var retArr = []; // array to hold values from db
     var base = new Airtable({apiKey: 'keypmQe98NRiZBQcw'}).base('appECiA8jbyRdHrbu'); // access db
@@ -100,6 +114,11 @@ class Calendar extends React.Component {
     return retArr;
   }
 
+  /**
+   * Update the selectedOptions variable when user selects new clients
+   * or when they want to remove a client from their selection
+   * @param {event} e : state change event
+   */
   onSelectedOptionsChange = (e) => {
     // this gets the item that was clicked in the multiselect form
     var selection = [].slice.call(e.target.selectedOptions).map(item => item.value)[0];
@@ -112,6 +131,10 @@ class Calendar extends React.Component {
     }
   }
 
+  /**
+   * Gets the selectedOptions array as a formatted string for use in the Gcal event
+   * @returns A formatted string
+   */
   formatSelections = () => {
     var str = ''
     this.state.selectedOptions.forEach((e)=>{
@@ -123,8 +146,13 @@ class Calendar extends React.Component {
     return str;
   }
 
+  /**
+   * On form submit, adds the info given to the user's Google Calendar
+   * @param {event} e : form submit event
+   * @returns void on invalid submit
+   */
   handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // prevent page reload
     if(this.state.selectedOptions.length <= 0 || this.state.date === ''){
       this.setState({error: 'Please indicate one or more clients and pick a date'});
       return;
@@ -166,11 +194,17 @@ class Calendar extends React.Component {
     })
   }
 
+  /**
+   * Renders the page
+   * @returns the page info to render
+   */
   render(){
       return(
           <div>
               <NavBar employee={true} />
+
               {this.state.error !== '' && <Alert variant="danger">{this.state.error}</Alert>}
+
               <h1 style={{color:"#ffffff"}}>Calendar</h1>
               <div style={{
                   display: 'flex',
@@ -238,66 +272,3 @@ class Calendar extends React.Component {
 }
 
 export default Calendar;
-
-/*
-    if(this.state.selectedOptions.length <= 0 || this.state.date === ''){
-      this.setState({error: 'Please indicate one or more clients and pick a date'});
-      return;
-    }
-
-    var gapi = window.gapi; // access google api
-
-    gapi.load('client:auth2', () => { // load the client
-      console.log('loaded client');
-
-      
-      //not sure if we need gapi.client.setApiKey("AIzaSyDi6f8GTovPHez69kp77CvTSAEzSYBM__Q");
-
-      // this causes an error because we are already signed in, but idk how else to set the
-      // client's api key. For now it seems to work, but if we run into future errors, we should keep
-      // this code in mind.
-
-      gapi.client.init({
-        apiKey: "AIzaSyDi6f8GTovPHez69kp77CvTSAEzSYBM__Q",
-        clientId: "1075606334020-sdhvje80qvau18224tlqfb0g1gb5dqeb.apps.googleusercontent.com",
-        discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
-        scope: "https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/calendar",
-      });
-
-      //datetime format: 'dateTime': '2022-04-28T09:00:00-07:00'
-      
-
-
-
-      gapi.client.load('calendar', 'v3', () => console.log('bam!')); // get the calendar api
-
-      gapi.auth2.getAuthInstance().signIn() // make sure we're signed in
-      .then(() => {
-        
-        // create an event to be added
-        var event = {
-          'summary': 'Reach out to prospective clients',
-          'description': 'This is a reminder to reach out to the following clients: ',
-          'start': {
-            'dateTime': '2022-04-28T09:00:00-07:00',
-          },
-          'end': {
-            'dateTime': '2022-04-28T017:00:00-07:00',
-          }
-        };
-
-        // add the event to the user's primary calendar
-        var request = gapi.client.calendar.events.insert({
-          'calendarId': 'primary',
-          'resource': event,
-        });
-
-        request.execute(event => {
-          console.log(event)
-          window.open(event.htmlLink)
-        });
-      });
-    })
-
-    this.setState({selectedOptions: [], date: ''}); // reset form fields 
-    */

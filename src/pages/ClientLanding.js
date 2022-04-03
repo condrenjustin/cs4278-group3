@@ -6,7 +6,7 @@ import { createTheme } from '@mui/material/styles';
 
 /**
  * The client landing page is the first page that clients see after logging in
- * It will present some information, and then ask them if they are looking to source supplies or purcahse safety management
+ * It will present some information, and then ask them if they are looking to source supplies or purchase safety management
  * They will be redirected to the appropriate page based on their decision
  */
 
