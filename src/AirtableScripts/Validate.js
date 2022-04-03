@@ -1,3 +1,12 @@
+/**
+ * Group 3
+ * Homework 3
+ * Grant Bowlds (grant.f.bowlds@vanderbilt.edu) 
+ * Donny Carr (donovan.e.carr@vanderbilt.edu) 
+ * Justin Condren (justin.l.condren@vanderbilt.edu)
+ * Skyler Grandel (skyler.h.grandel@vanderbilt.edu)
+ */
+
 // Script for airtable to validate survey responses
 let table = base.getTable('CRM-Prospects');
 let result = await table.selectRecordsAsync();

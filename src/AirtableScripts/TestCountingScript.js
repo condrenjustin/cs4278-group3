@@ -1,3 +1,12 @@
+/**
+ * Group 3
+ * Homework 3
+ * Grant Bowlds (grant.f.bowlds@vanderbilt.edu) 
+ * Donny Carr (donovan.e.carr@vanderbilt.edu) 
+ * Justin Condren (justin.l.condren@vanderbilt.edu)
+ * Skyler Grandel (skyler.h.grandel@vanderbilt.edu)
+ */
+
 // This script is for counting tests given for statistics purposes
 let table_1 = base.getTable('Master List');
 let tests = base.getTable("Attendees");

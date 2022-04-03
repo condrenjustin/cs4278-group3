@@ -1,11 +1,16 @@
+/**
+ * Group 3
+ * Homework 3
+ * Grant Bowlds (grant.f.bowlds@vanderbilt.edu) 
+ * Donny Carr (donovan.e.carr@vanderbilt.edu) 
+ * Justin Condren (justin.l.condren@vanderbilt.edu)
+ * Skyler Grandel (skyler.h.grandel@vanderbilt.edu)
+ */
+
 import React from 'react';
 import NavBar from '../components/NavBar';
 import Airtable from 'airtable';
 /** The data dashboard page. Displays statistics for KOACORE business relevant to the client */
-
-
-
-
 
 class DataDashboard extends React.Component {
     render(){
