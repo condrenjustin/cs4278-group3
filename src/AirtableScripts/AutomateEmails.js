@@ -1,3 +1,12 @@
+/**
+ * Group 3
+ * Homework 3
+ * Grant Bowlds (grant.f.bowlds@vanderbilt.edu) 
+ * Donny Carr (donovan.e.carr@vanderbilt.edu) 
+ * Justin Condren (justin.l.condren@vanderbilt.edu)
+ * Skyler Grandel (skyler.h.grandel@vanderbilt.edu)
+ */
+
 // JavaScript source code - Email Automation for customers that want to receive emails from KOACORE.
 let table = base.getTable('CRM-Prospects'); //get the KOACORE clients data table, provides pertinent information about each one of KOACORE's customers
 let result = await table.selectRecordsAsync();
