@@ -78,9 +78,9 @@ class NavBar extends React.Component {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="justify-content-end" style={{ flex: 1}}>
-                                <Nav.Item><Nav.Link href="/">Account</Nav.Link> </Nav.Item>
+                                <Nav.Item><Nav.Link href="https://www.koacore.com/">Primary Site</Nav.Link> </Nav.Item>
                                 {this.insertLinks()}
-                                <Nav.Item><Nav.Link href="/">Contact Us</Nav.Link> </Nav.Item>
+                                <Nav.Item><Nav.Link href="https://www.koacore.com/contact-us">Contact Us</Nav.Link> </Nav.Item>
                                 <Nav.Item style={{marginLeft: "20px"}}>
                                     <GoogleLogout
                                         clientId="1075606334020-sdhvje80qvau18224tlqfb0g1gb5dqeb.apps.googleusercontent.com"

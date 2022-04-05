@@ -8,6 +8,7 @@
  */
 
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import {GoogleLogin} from 'react-google-login';
 import { Navigate } from "react-router-dom";
 import logo from '../images/KOA_only_White.PNG';
@@ -23,7 +24,8 @@ class SignOn extends React.Component {
     id:"",
     name:"",
     img:"",
-    email:""
+    email:"",
+    guest: false
   }
 
   /**
@@ -101,6 +103,8 @@ class SignOn extends React.Component {
        nav =  (<Navigate to="/client-landing" replace={true} />);
       }
     }
+
+    if(this.state.guest){nav =  (<Navigate to="/client-landing" replace={true} />);}
     
 
     return(
@@ -123,8 +127,12 @@ class SignOn extends React.Component {
               width="200"
               className='google-button'
             />
-            {nav}
         </div>
+        <Button onClick={()=>this.setState({guest:true})} 
+        variant='outline-light'
+        style={{marginTop:'20px'}}
+        >Continue as Guest</Button>
+        {nav}
       </div>
     );
   }

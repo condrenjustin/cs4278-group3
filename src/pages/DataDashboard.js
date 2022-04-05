@@ -13,30 +13,47 @@ import Airtable from 'airtable';
 /** The data dashboard page. Displays statistics for KOACORE business relevant to the client */
 
 class DataDashboard extends React.Component {
-    render(){
+
+    state = {
+        serviced: 0,
+        provided: 0
+    }
+
+    componentDidMount = async() => {
         var x, y;
         // Airtable api call to get most recent entry
 
-        var Airtable = require('airtable');
         var base = new Airtable({apiKey: 'keypmQe98NRiZBQcw'}).base('appECiA8jbyRdHrbu');
         base('CRM-Prospects').select({
             maxRecords: 1,
-            view: 'Retrieve Most Recent'}).firstPage(function(err, records) {
-                if (err) { console.error(err); return; }
-                records.forEach(function(record) {
-                    x = record.get('Venues');
+            view: 'Retrieve Most Recent'}).eachPage((records, fetchNextPage) => {
+                records.forEach((record) => {
+                    x = record.get('Venues').length;
                 });
+
+                fetchNextPage();
+            }).then((err) => {
+                if (err) { console.error(err); return; }
+                this.setState({serviced:x})
+                console.log(x);
             });
             
         base('CRM-Prospects').select({
             maxRecords: 1,
-            view: 'Retrieve Most Recent'}).firstPage(function(err, records) {
-                if (err) { console.error(err); return; }
-                records.forEach(function(record) {
-                    y = record.get('Test Count');
+            view: 'Retrieve Most Recent'}).eachPage((records, fetchNextPage) => {
+                records.forEach((record) => {
+                    y = record.get('Test Count')[0];
                 });
+
+                fetchNextPage();
+            }).then((err) => {
+                if (err) { console.error(err); return; }
+                this.setState({provided:y})
+                console.log(y);
             });
-        
+    }
+
+    render(){
 
         return(
             <div>
@@ -47,9 +64,12 @@ class DataDashboard extends React.Component {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    width:'80%',
+                    margin: 'auto',
+                    marginTop: '80px'
                 }}>
                     
-                    <p style={{color:"#ffffff"}}> Thank you for considering KOACORE for your safety needs. We have worked with events ranging from Elton John to Coldplay, and we cannot wait to add you to the KOA family. In your region, we have serviced {x} and provided {y} tests for fans, generating ${y*40} in shared revenue. </p>
+                    <p style={{color:"#ffffff"}}> Thank you for considering KOACORE for your safety needs. We have worked with events ranging from Elton John to Coldplay, and we cannot wait to add you to the KOA family. In your region, we have serviced {this.state.serviced} clients and provided {this.state.provided} tests for fans, generating ${this.state.provided*40} in shared revenue. </p>
                 </div>
             </div>
         );

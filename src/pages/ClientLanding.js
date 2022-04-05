@@ -29,6 +29,9 @@ class ClientLanding extends React.Component {
                     display: 'flex',
                     alignItems: 'Justify',
                     justifyContent: 'Left',
+                    width:'80%',
+                    margin: 'auto',
+                    marginTop: '40px'
                 }}>
                     <p style={{color:"#ffffff"}}>KOACORE is a full-scale safety management firm. As leaders in event management and COVID safety, we partner with best-in-class technology platforms, manufacturers, medical advisors, and staffing companies to provide a one-stop-shop for all safety in a Covid and post-Covid environment. KOACORE is proud to be part of the Return to Live by ensuring our clients have access to best-in-class safety, guidance, equipment, and support.</p>
                 </div>
@@ -36,13 +39,15 @@ class ClientLanding extends React.Component {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    padding: 10,
+                    width:'80%',
+                    margin: 'auto',
+                    marginTop:'40px'
                 }}>
-                        <Button variant="contained" component={Link} to="/trade">
+                        <Button style={{margin:'auto'}} variant="contained" component={Link} to="/trade">
                         I need to source supplies
                         </Button>
                         
-                        <Button variant="contained" component={Link} to="/client-survey">
+                        <Button style={{margin:'auto'}} variant="contained" component={Link} to="/client-survey">
                         I'm looking for safety management for my event
                         </Button>
                 </div>

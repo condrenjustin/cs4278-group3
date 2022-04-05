@@ -9,7 +9,7 @@
 
 import React from 'react';
 import NavBar from '../components/NavBar';
-import {Form, Button, Alert} from 'react-bootstrap';
+import {Form, Button, Alert, Spinner} from 'react-bootstrap';
 import Airtable from 'airtable';
 
 /**
@@ -113,9 +113,9 @@ class Calendar extends React.Component {
       // If there are no more records, `done` will get called.
       fetchNextPage();
   
-    }, function done(err) {
+    }).then((err) => {
       if (err) { console.error(err); return; }
-      
+      this.setState({openForm:true});
     });
 
     return retArr;
@@ -270,7 +270,7 @@ class Calendar extends React.Component {
                             Add to Google Calendar
                     </Button>
                   </Form>
-              ) : <Button style={{marginBottom :'80px'}} onClick={() => this.setState({openForm:true})}> Open Form </Button>}
+              ) : <Spinner style={{marginBottom:'80px'}} animation="border" variant="light" size='lg' />}
 
           </div>
           
