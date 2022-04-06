@@ -21,31 +21,31 @@ test('renders data dashboard', () => {
 });
 
 // make sure calendar is correctly rendered
-test('renders data dashboard', () => {
+test('renders calendar', () => {
   render(<DataDashboard />);
   expect(screen.getByText('Thank you for considering KOACORE')).toBeInTheDocument();
 });
 
 // make sure client database is correctly rendered
-test('renders data dashboard', () => {
+test('renders client database', () => {
   render(<DataDashboard />);
   expect(screen.getByText('Thank you for considering KOACORE')).toBeInTheDocument();
 });
 
 // make sure client landing is correctly rendered
-test('renders data dashboard', () => {
+test('renders client landing', () => {
   render(<DataDashboard />);
   expect(screen.getByText('Thank you for considering KOACORE')).toBeInTheDocument();
 });
 
 // make sure client survey is correctly rendered
-test('renders data dashboard', () => {
+test('renders client survey', () => {
   render(<DataDashboard />);
   expect(screen.getByText('Thank you for considering KOACORE')).toBeInTheDocument();
 });
 
 // make sure trade landing is correctly rendered
-test('renders data dashboard', () => {
+test('renders trade landing', () => {
   render(<DataDashboard />);
   expect(screen.getByText('Thank you for considering KOACORE')).toBeInTheDocument();
 });
