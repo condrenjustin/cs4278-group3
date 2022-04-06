@@ -35,17 +35,17 @@ test('renders client database', () => {
 // make sure client landing is correctly rendered
 test('renders client landing', () => {
   render(<DataDashboard />);
-  expect(screen.getByText('Thank you for considering KOACORE')).toBeInTheDocument();
+  expect(screen.getByText('KOACORE is a full-scale safety management firm')).toBeInTheDocument();
 });
 
 // make sure client survey is correctly rendered
 test('renders client survey', () => {
   render(<DataDashboard />);
-  expect(screen.getByText('Thank you for considering KOACORE')).toBeInTheDocument();
+  expect(screen.getByText('Client Survey')).toBeInTheDocument();
 });
 
 // make sure trade landing is correctly rendered
 test('renders trade landing', () => {
   render(<DataDashboard />);
-  expect(screen.getByText('Thank you for considering KOACORE')).toBeInTheDocument();
+  expect(screen.getByText('Trade Form')).toBeInTheDocument();
 });
