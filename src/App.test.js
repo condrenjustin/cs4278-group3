@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import DataDashboard from './pages/DataDashboard';
 
 
 // basic smoke test
@@ -8,11 +9,10 @@ test('renders without crashing', () => {
   ReactDOM.render(<App />, div);
 });
 
-// make sure the expected thing is rendered -- change the expected value
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+// make sure data dashboard is correctly rendered
+test('renders data dashboard', () => {
+  render(<DataDashboard />);
+  expect(screen.getByText('Thank you for considering KOACORE')).toBeInTheDocument();
 });
 
 
