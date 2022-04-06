@@ -1,3 +1,12 @@
+/**
+ * Group 3
+ * Homework 3
+ * Grant Bowlds (grant.f.bowlds@vanderbilt.edu) 
+ * Donny Carr (donovan.e.carr@vanderbilt.edu) 
+ * Justin Condren (justin.l.condren@vanderbilt.edu)
+ * Skyler Grandel (skyler.h.grandel@vanderbilt.edu)
+ */
+
 import React from 'react';
 import {GoogleLogout} from 'react-google-login';
 import {Nav, Navbar, Container} from 'react-bootstrap'
@@ -6,29 +15,49 @@ import logo from '../images/Koa-1.webp';
 
 class NavBar extends React.Component {
     state = {
-        logOut: null
+        logOut: null // assign when the user logs out so that we can navigate back to the SignOn screen
     }
 
+    /**
+     * log an error if logout is unsuccessful
+     * @param {error} response The error that caused the failure
+     */
     failLog(response){
         console.log("Failed");
         console.log(response);
     }
     
+    /**
+     * On success, we navigate back to the SignOn page
+     */
     logout = async() => {
         console.log("Logout called");
         this.setState({
-            logOut: (<Navigate to="/" replace={true} />)
+            logOut: (<Navigate to="/" replace={true} />) // Rendering this component navigates to SignOn.js
         });
     }
 
+    /**
+     * Add the appropriate links to the Navbar based on whether the user is an employee or client
+     * @returns Navbar links to render
+     */
     insertLinks = () =>{
-        if(this.props.employee){
-            return(<Nav.Item><Nav.Link href="/client-database">Client Database</Nav.Link> </Nav.Item>);
+        if(this.props.employee){ // set employee to true if the user is an employee when calling this component
+            return(
+                <>
+                    <Nav.Item><Nav.Link href="/client-database">Client Database</Nav.Link> </Nav.Item>
+                    <Nav.Item><Nav.Link href="/calendar">Calendar</Nav.Link> </Nav.Item>
+                </>
+            );
         } else {
             return(<Nav.Item><Nav.Link href="/client-survey">Survey</Nav.Link> </Nav.Item>);
         }
     }
 
+    /**
+     * Component hook to render a page
+     * @returns page to render
+     */
     render(){
         return(
             <div>
@@ -49,15 +78,16 @@ class NavBar extends React.Component {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="justify-content-end" style={{ flex: 1}}>
-                                <Nav.Item><Nav.Link href="/">Account</Nav.Link> </Nav.Item>
+                                <Nav.Item><Nav.Link href="https://www.koacore.com/">Primary Site</Nav.Link> </Nav.Item>
                                 {this.insertLinks()}
-                                <Nav.Item><Nav.Link href="/">Contact Us</Nav.Link> </Nav.Item>
+                                <Nav.Item><Nav.Link href="https://www.koacore.com/contact-us">Contact Us</Nav.Link> </Nav.Item>
                                 <Nav.Item style={{marginLeft: "20px"}}>
                                     <GoogleLogout
                                         clientId="1075606334020-sdhvje80qvau18224tlqfb0g1gb5dqeb.apps.googleusercontent.com"
                                         buttonText="Log Out"
                                         onLogoutSuccess={this.logout}
                                         onFailure={this.failLog}
+                                        className='google-button'
                                     >
                                     </GoogleLogout>
                                 </Nav.Item>

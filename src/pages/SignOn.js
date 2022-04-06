@@ -1,4 +1,14 @@
+/**
+ * Group 3
+ * Homework 3
+ * Grant Bowlds (grant.f.bowlds@vanderbilt.edu) 
+ * Donny Carr (donovan.e.carr@vanderbilt.edu) 
+ * Justin Condren (justin.l.condren@vanderbilt.edu)
+ * Skyler Grandel (skyler.h.grandel@vanderbilt.edu)
+ */
+
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import {GoogleLogin} from 'react-google-login';
 import { Navigate } from "react-router-dom";
 import logo from '../images/KOA_only_White.PNG';
@@ -9,13 +19,19 @@ import "../styles/SignOn.css"
  */
 
 class SignOn extends React.Component {
+  // store users Google Account info
   state = {
     id:"",
     name:"",
     img:"",
-    email:""
+    email:"",
+    guest: false
   }
 
+  /**
+   * On successful sign in, get the user's information
+   * @param {GoogleUser} googleUser 
+   */
   onSignIn = async(googleUser) => {
     var profile = googleUser.getBasicProfile();
 
@@ -32,11 +48,18 @@ class SignOn extends React.Component {
     })
   }
 
+  /**
+   * log an error if logout is unsuccessful
+   * @param {error} response The error that caused the failure
+   */
   failLog(response){
     console.log("Failed");
     console.log(response);
   }
 
+  /**
+   * On success, we reset the state
+   */
   logout = async() => {
     console.log("Logout called");
     this.setState({
@@ -47,8 +70,12 @@ class SignOn extends React.Component {
     });
   }
 
+  /**
+   * Component hook to render a page
+   * @returns page to render
+   */
   render() {
-    // let info = null; // to display info, uncomment code in this part and add {info} to the return()
+    // let info = null; // to display info, uncomment this and the block below and add {info} to the return()
     let nav = null;
     if(this.state.id !== ""){
       /*
@@ -69,12 +96,15 @@ class SignOn extends React.Component {
       </div>)
       */
 
+      // navigate to client or employee pages based on email extension
       if(this.state.email.includes("@koacore")){
        nav = (<Navigate to="/client-database" replace={true} />);
       } else {
        nav =  (<Navigate to="/client-landing" replace={true} />);
       }
     }
+
+    if(this.state.guest){nav =  (<Navigate to="/client-landing" replace={true} />);}
     
 
     return(
@@ -85,6 +115,9 @@ class SignOn extends React.Component {
         <div>
             <GoogleLogin
               clientId="1075606334020-sdhvje80qvau18224tlqfb0g1gb5dqeb.apps.googleusercontent.com"
+              discoveryDocs={["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"]}
+              scope='https://www.googleapis.com/auth/calendar.events'
+              key='AIzaSyDi6f8GTovPHez69kp77CvTSAEzSYBM__Q'
               buttonText="Continue with Google"
               onSuccess={this.onSignIn}
               onFailure={this.failLog}
@@ -92,10 +125,14 @@ class SignOn extends React.Component {
               isSignedIn={true}
               theme="dark"
               width="200"
-
+              className='google-button'
             />
-            {nav}
         </div>
+        <Button onClick={()=>this.setState({guest:true})} 
+        variant='outline-light'
+        style={{marginTop:'20px'}}
+        >Continue as Guest</Button>
+        {nav}
       </div>
     );
   }
