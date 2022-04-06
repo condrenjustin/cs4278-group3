@@ -20,18 +20,6 @@ test('renders data dashboard', () => {
   expect(screen.getByText('Thank you for considering KOACORE')).toBeInTheDocument();
 });
 
-// make sure calendar is correctly rendered
-test('renders calendar', () => {
-  render(<DataDashboard />);
-  expect(screen.getByText('Thank you for considering KOACORE')).toBeInTheDocument();
-});
-
-// make sure client database is correctly rendered
-test('renders client database', () => {
-  render(<DataDashboard />);
-  expect(screen.getByText('Thank you for considering KOACORE')).toBeInTheDocument();
-});
-
 // make sure client landing is correctly rendered
 test('renders client landing', () => {
   render(<DataDashboard />);
