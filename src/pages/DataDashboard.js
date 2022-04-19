@@ -59,7 +59,7 @@ class DataDashboard extends React.Component {
             <div>
                 <NavBar />
                 <br></br>
-                <h1 style={{color:"#ffffff"}}></h1>
+                <h1 style={{color:"#ffffff"}}>Dashboard</h1>
                 <div style={{
                     display: 'flex',
                     alignItems: 'center',

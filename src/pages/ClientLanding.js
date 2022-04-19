@@ -11,6 +11,9 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container'
 import { createTheme } from '@mui/material/styles';
 
 /**
@@ -22,7 +25,25 @@ import { createTheme } from '@mui/material/styles';
 class ClientLanding extends React.Component {
     render(){
         return(
-            <div>
+            <Container maxWidth="sm">
+                <h1 style={{color:"#ffffff"}}>Welcome to KOACORE</h1>
+                <Typography variant="h5" align="center" color="white" paragraph>
+                KOACORE is a full-scale safety management firm. As leaders in event management and COVID safety, 
+                we partner with best-in-class technology platforms, manufacturers, medical advisors, and staffing companies to provide a one-stop-shop 
+                for all safety in a Covid and post-Covid environment. 
+                KOACORE is proud to be part of the Return to Live by ensuring our clients have access to best-in-class safety, guidance, equipment, and support.
+                </Typography>
+                <Stack
+                    sx={{ pt: 4 }}
+                    direction="row"
+                    spacing={2}
+                    justifyContent="center"
+                >
+                <Button variant="contained">Source Supplies</Button>
+                <Button variant="contained">Safety Management</Button>
+                </Stack>
+            </Container>
+            /* <div>
                 <NavBar />
                 <br></br>
                 <div style={{
@@ -51,7 +72,7 @@ class ClientLanding extends React.Component {
                         I'm looking for safety management for my event
                         </Button>
                 </div>
-            </div>
+            </div> */
         );
     }
 }
