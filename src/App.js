@@ -17,6 +17,8 @@ import DataDashboard from './pages/DataDashboard';
 import ClientLanding from './pages/ClientLanding';
 import TradeLanding from './pages/TradeLanding';
 import Calendar from './pages/Calendar';
+import PrivateRoute from './components/PrivateRoute';
+import { AuthProvider } from './components/AuthProvider';
 
 /**
  * This is the entry point of the app. It defines all of the routes (or pages) that the user can go to.
@@ -27,15 +29,17 @@ function App() {
   return (
     <div className="App">
     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<SignOn/>} />
-        <Route path='/client-survey' element={<ClientSurvey/>} />
-        <Route path='/client-database' element={<ClientDatabase/>} />
-        <Route path='/data-dashboard' element={<DataDashboard/>} />
-        <Route path='/client-landing' element={<ClientLanding/>} />
-        <Route path='/trade' element={<TradeLanding/>} />
-        <Route path='/calendar' element={<Calendar/>} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path='/' element={<SignOn/>} />
+          <Route path='/client-survey' element={<ClientSurvey/>} />
+          <Route path='/client-database' element={<PrivateRoute><ClientDatabase/></PrivateRoute>} />
+          <Route path='/data-dashboard' element={<DataDashboard/>} />
+          <Route path='/client-landing' element={<ClientLanding/>} />
+          <Route path='/trade' element={<TradeLanding/>} />
+          <Route path='/calendar' element={<PrivateRoute><Calendar/></PrivateRoute>} />
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
     </div>
   );

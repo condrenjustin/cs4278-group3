@@ -10,7 +10,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import {GoogleLogin} from 'react-google-login';
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from '../components/AuthProvider';
 import logo from '../images/KOA_only_White.PNG';
 import "../styles/SignOn.css"
 
@@ -40,12 +41,20 @@ class SignOn extends React.Component {
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
+    this.props.setCurrentUser(await profile.getEmail());
+
     this.setState({
       id: await profile.getId(),
       name: await profile.getName(),
       img: await profile.getImageUrl(),
       email: await profile.getEmail()
-    })
+    });
+
+    if(this.state.email.includes("@koacore")){
+      this.props.navigate('/client-database');
+     } else {
+      this.props.navigate('/client-landing');
+     }
   }
 
   /**
@@ -75,10 +84,10 @@ class SignOn extends React.Component {
    * @returns page to render
    */
   render() {
+    /*
     // let info = null; // to display info, uncomment this and the block below and add {info} to the return()
-    let nav = null;
     if(this.state.id !== ""){
-      /*
+      
       info = (<div>
         <p>ID: {this.state.id}</p>
         <p>Name: {this.state.name}</p>
@@ -94,17 +103,8 @@ class SignOn extends React.Component {
           </GoogleLogout>
         </div>
       </div>)
-      */
-
-      // navigate to client or employee pages based on email extension
-      if(this.state.email.includes("@koacore")){
-       nav = (<Navigate to="/client-database" replace={true} />);
-      } else {
-       nav =  (<Navigate to="/client-landing" replace={true} />);
-      }
     }
-
-    if(this.state.guest){nav =  (<Navigate to="/client-landing" replace={true} />);}
+    */
     
 
     return(
@@ -128,14 +128,18 @@ class SignOn extends React.Component {
               className='google-button'
             />
         </div>
-        <Button onClick={()=>this.setState({guest:true})} 
+        <Button onClick={()=>this.props.navigate('/client-landing')} 
         variant='outline-light'
         style={{marginTop:'20px'}}
         >Continue as Guest</Button>
-        {nav}
       </div>
     );
   }
 }
 
-export default SignOn;
+export default function(props) {
+  const { setCurrentUser } = useAuth();
+  const navigate = useNavigate();
+
+  return <SignOn {...props} setCurrentUser={setCurrentUser} navigate={navigate}/>;
+}

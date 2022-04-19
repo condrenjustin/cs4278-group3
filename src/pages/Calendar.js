@@ -53,7 +53,9 @@ class Calendar extends React.Component {
 
     // state for Gcal form
     options: [], // list of clients that a user could be reminded about
+    allOptions: [],
     selectedOptions: [], // clients currently selected by user
+    search: '', // current contents of the search bar
     date: '', // date the user should be reminded
     openForm: false, // state to see if the form should be visible
     error: ''
@@ -68,6 +70,7 @@ class Calendar extends React.Component {
     this.getData().then((arr) =>{
       this.setState({
         options: arr,
+        allOptions: arr,
 
         // google api information
         clientId: "1075606334020-sdhvje80qvau18224tlqfb0g1gb5dqeb.apps.googleusercontent.com",
@@ -201,6 +204,17 @@ class Calendar extends React.Component {
     })
   }
 
+  search = (e) => {
+    var newOptions = []
+    this.state.allOptions.forEach(str => {
+      if(str.toLowerCase().includes(e.target.value.toLowerCase())){
+        newOptions.push(str);
+      }
+    });
+
+    this.setState({options: newOptions, search: e.target.value});
+  }
+
   /**
    * Renders the page
    * @returns the page info to render
@@ -239,6 +253,7 @@ class Calendar extends React.Component {
     
                     <Form.Group className='mb-3' style={{width:"50%", margin:'auto'}}>
                       <Form.Label style={{color:"#ffffff"}}>Which clients do you want to contact?</Form.Label>
+                      <Form.Control type="text" placeholder="Search" value={this.state.search} onChange={this.search} />
                       <Form.Control 
                       as="select" 
                       size='lg' 

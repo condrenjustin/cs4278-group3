@@ -10,7 +10,7 @@
 import React from 'react';
 import {GoogleLogout} from 'react-google-login';
 import {Nav, Navbar, Container} from 'react-bootstrap'
-import { Navigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import logo from '../images/Koa-1.webp';
 
 class NavBar extends React.Component {
@@ -45,12 +45,12 @@ class NavBar extends React.Component {
         if(this.props.employee){ // set employee to true if the user is an employee when calling this component
             return(
                 <>
-                    <Nav.Item><Nav.Link href="/client-database">Client Database</Nav.Link> </Nav.Item>
-                    <Nav.Item><Nav.Link href="/calendar">Calendar</Nav.Link> </Nav.Item>
+                    <Nav.Item><Nav.Link onClick={() => this.props.navigate('/client-database')}>Client Database</Nav.Link> </Nav.Item>
+                    <Nav.Item><Nav.Link onClick={() => this.props.navigate('/calendar')}>Calendar</Nav.Link> </Nav.Item>
                 </>
             );
         } else {
-            return(<Nav.Item><Nav.Link href="/client-survey">Survey</Nav.Link> </Nav.Item>);
+            return(<Nav.Item><Nav.Link onClick={() => this.props.navigate('/client-survey')}>Survey</Nav.Link> </Nav.Item>);
         }
     }
 
@@ -100,4 +100,8 @@ class NavBar extends React.Component {
     }
 }
 
-export default NavBar;
+export default function(props) {
+    const navigate = useNavigate();
+
+    return <NavBar {...props} navigate={navigate}/>;
+}
