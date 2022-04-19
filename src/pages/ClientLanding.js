@@ -39,8 +39,8 @@ class ClientLanding extends React.Component {
                     spacing={2}
                     justifyContent="center"
                 >
-                <Button variant="contained">Source Supplies</Button>
-                <Button variant="contained">Safety Management</Button>
+                <Button variant="contained" component={Link} to="/trade">Source Supplies</Button>
+                <Button variant="contained" component={Link} to="/client-survey">Safety Management</Button>
                 </Stack>
             </Container>
             /* <div>
