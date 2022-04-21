@@ -23,7 +23,7 @@ class DataDashboard extends React.Component {
         var x, y;
         // Airtable api call to get most recent entry
 
-        var base = new Airtable({apiKey: 'keypmQe98NRiZBQcw'}).base('appECiA8jbyRdHrbu');
+        var base = new Airtable({apiKey: process.env.REACT_APP_ATKEY}).base('appECiA8jbyRdHrbu');
         base('CRM-Prospects').select({
             maxRecords: 1,
             view: 'Retrieve Most Recent'}).eachPage((records, fetchNextPage) => {

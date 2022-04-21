@@ -74,7 +74,7 @@ class Calendar extends React.Component {
 
         // google api information
         clientId: "1075606334020-sdhvje80qvau18224tlqfb0g1gb5dqeb.apps.googleusercontent.com",
-        apiKey: "AIzaSyDi6f8GTovPHez69kp77CvTSAEzSYBM__Q",
+        apiKey: process.env.REACT_APP_GKEY,
         discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
         scope: "https://www.googleapis.com/auth/calendar.events",
       });
@@ -92,7 +92,7 @@ class Calendar extends React.Component {
    */
   getData = async() => {
     var retArr = []; // array to hold values from db
-    var base = new Airtable({apiKey: 'keypmQe98NRiZBQcw'}).base('appECiA8jbyRdHrbu'); // access db
+    var base = new Airtable({apiKey: process.env.REACT_APP_ATKEY}).base('appECiA8jbyRdHrbu'); // access db
 
     // from the CRM-Prospects table, access all entries
     base('CRM-Prospects').select({

@@ -105,7 +105,6 @@ class SignOn extends React.Component {
       </div>)
     }
     */
-    
 
     return(
       <div>
@@ -117,7 +116,7 @@ class SignOn extends React.Component {
               clientId="1075606334020-sdhvje80qvau18224tlqfb0g1gb5dqeb.apps.googleusercontent.com"
               discoveryDocs={["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"]}
               scope='https://www.googleapis.com/auth/calendar.events'
-              key='AIzaSyDi6f8GTovPHez69kp77CvTSAEzSYBM__Q'
+              key= {process.env.REACT_APP_GKEY}
               buttonText="Continue with Google"
               onSuccess={this.onSignIn}
               onFailure={this.failLog}
