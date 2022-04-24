@@ -59,7 +59,6 @@ class DataDashboard extends React.Component {
         return(
             <div>
                 <NavBar />
-                <br></br>
                 <h1 style={{color:"#ffffff"}}>Dashboard</h1>
                 <div style={{
                     display: 'flex',
@@ -69,11 +68,13 @@ class DataDashboard extends React.Component {
                     margin: 'auto',
                     marginTop: '80px'
                 }}>
-                    
-                    <p style={{color:"#ffffff"}}> Thank you for considering KOACORE for your safety needs. We have worked with events ranging from Elton John to Coldplay, and we cannot wait to add you to the KOA family. In your region, we have: {this.state.serviced}</p>
-                    <p style={{color:"#ffffff"}}> <CountUp delay={1} end={(this.state.serviced)} /> venues serviced </p>
-                    <p style={{color:"#ffffff"}}> <CountUp delay={2} end={this.state.serviced} /> fans tested </p> 
-                    <p style={{color:"#ffffff"}}> <CountUp delay={3} end={100} />% client satisfaction. </p>
+                    <p style={{color:"#ffffff"}}> Thank you for considering KOACORE for your safety needs. We have worked with events ranging from Elton John to Coldplay, and we cannot wait to add you to the KOA family. In your region, we have:</p>
+                </div>
+                <br></br>
+                <div>
+                    <p style={{color:"#ffffff"}}> <CountUp delay={0.5} end={(this.state.serviced)} /> venues serviced </p>
+                    <p style={{color:"#ffffff"}}> <CountUp delay={1} end={this.state.provided} /> fans tested </p> 
+                    <p style={{color:"#ffffff"}}> <CountUp delay={1.5} end={100} />% client satisfaction. </p>
                 </div>
             </div>
         );
