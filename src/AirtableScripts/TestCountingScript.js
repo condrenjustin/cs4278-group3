@@ -1,13 +1,7 @@
-/**
- * Group 3
- * Homework 3
- * Grant Bowlds (grant.f.bowlds@vanderbilt.edu) 
- * Donny Carr (donovan.e.carr@vanderbilt.edu) 
- * Justin Condren (justin.l.condren@vanderbilt.edu)
- * Skyler Grandel (skyler.h.grandel@vanderbilt.edu)
+/** This script is for airtable
+ *  it counts all tests for an event
+ *  won't work if you don't run it through the airtable
  */
-
-// This script is for counting tests given for statistics purposes
 let table_1 = base.getTable('Master List');
 let tests = base.getTable("Attendees");
 let notCounted = tests.getView("Not Counted attendees");

@@ -10,6 +10,7 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 import Airtable from 'airtable';
+import CountUp from 'react-countup';
 /** The data dashboard page. Displays statistics for KOACORE business relevant to the client */
 
 class DataDashboard extends React.Component {
@@ -69,7 +70,10 @@ class DataDashboard extends React.Component {
                     marginTop: '80px'
                 }}>
                     
-                    <p style={{color:"#ffffff"}}> Thank you for considering KOACORE for your safety needs. We have worked with events ranging from Elton John to Coldplay, and we cannot wait to add you to the KOA family. In your region, we have serviced {this.state.serviced} clients and provided {this.state.provided} tests for fans, generating ${this.state.provided*40} in shared revenue. </p>
+                    <p style={{color:"#ffffff"}}> Thank you for considering KOACORE for your safety needs. We have worked with events ranging from Elton John to Coldplay, and we cannot wait to add you to the KOA family. In your region, we have: {this.state.serviced}</p>
+                    <p style={{color:"#ffffff"}}> <CountUp delay={1} end={(this.state.serviced)} /> venues serviced </p>
+                    <p style={{color:"#ffffff"}}> <CountUp delay={2} end={this.state.serviced} /> fans tested </p> 
+                    <p style={{color:"#ffffff"}}> <CountUp delay={3} end={100} />% client satisfaction. </p>
                 </div>
             </div>
         );
