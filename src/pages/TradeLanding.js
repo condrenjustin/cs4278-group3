@@ -16,7 +16,7 @@ import NavBar from '../components/NavBar';
  class SurveyTrade extends React.Component {
     render() {
         /** Client survey component imported from airtable */
-    return <iframe class="airtable-embed" src="https://airtable.com/embed/shrpyuUQUkvmagP8j?backgroundColor=purple" width={1000} height={533} ></iframe>    }
+    return <iframe class="airtable-embed" src="https://airtable.com/embed/shrpyuUQUkvmagP8j?backgroundColor=purple" width={1000} height={1362} ></iframe>    }
   }
 
 class TradeLanding extends React.Component {

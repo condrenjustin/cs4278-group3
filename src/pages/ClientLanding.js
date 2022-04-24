@@ -26,7 +26,9 @@ class ClientLanding extends React.Component {
     render(){
         return(
             <Container maxWidth="sm">
+                <br></br>
                 <h1 style={{color:"#ffffff"}}>Welcome to KOACORE</h1>
+                <br></br>
                 <Typography variant="h5" align="center" color="white" paragraph>
                 KOACORE is a full-scale safety management firm. As leaders in event management and COVID safety, 
                 we partner with best-in-class technology platforms, manufacturers, medical advisors, and staffing companies to provide a one-stop-shop 

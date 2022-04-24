@@ -59,22 +59,23 @@ class DataDashboard extends React.Component {
         return(
             <div>
                 <NavBar />
-                <h1 style={{color:"#ffffff"}}>Dashboard</h1>
+                <h1 style={{color:"#ffffff"}}>KOA in your Region</h1>
                 <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    width:'80%',
+                    width:'100%',
                     margin: 'auto',
-                    marginTop: '80px'
+                    marginTop: '20px',
+                    fontSize: "80%"
                 }}>
-                    <p style={{color:"#ffffff"}}> Thank you for considering KOACORE for your safety needs. We have worked with events ranging from Elton John to Coldplay, and we cannot wait to add you to the KOA family. In your region, we have:</p>
+                    <p style={{color:"#ffffff"}}> Thank you for considering KOA for your safety needs. We have worked with events ranging from Elton John to Coldplay, and we cannot wait to add you to the family. In your region, we have:</p>
                 </div>
                 <br></br>
                 <div>
-                    <p style={{color:"#ffffff"}}> <CountUp delay={0.5} end={(this.state.serviced)} /> venues serviced </p>
-                    <p style={{color:"#ffffff"}}> <CountUp delay={1} end={this.state.provided} /> fans tested </p> 
-                    <p style={{color:"#ffffff"}}> <CountUp delay={1.5} end={100} />% client satisfaction. </p>
+                    <p style={{fontSize:"500%", color:"#ffffff"}}> <CountUp delay={0.5} end={(this.state.serviced)} /></p> <p style={{fontSize:"100%", fontStyle: 'italic', color:"#ffffff"}}> venues serviced </p>
+                    <p style={{fontSize:"500%", color:"#ffffff"}}> <CountUp delay={1} end={(this.state.provided)} /></p> <p style={{fontSize:"100%", fontStyle: 'italic', color:"#ffffff"}}> fans tested </p>
+                    <p style={{fontSize:"500%", color:"#ffffff"}}> <CountUp delay={1.5} end={100} />%</p> <p style={{fontSize:"100%", fontStyle: 'italic', color:"#ffffff"}}> client satisfaction </p>
                 </div>
             </div>
         );
