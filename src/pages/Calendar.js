@@ -1,6 +1,6 @@
 /**
  * Group 3
- * Homework 3
+ * 
  * Grant Bowlds (grant.f.bowlds@vanderbilt.edu) 
  * Donny Carr (donovan.e.carr@vanderbilt.edu) 
  * Justin Condren (justin.l.condren@vanderbilt.edu)
@@ -62,7 +62,7 @@ class Calendar extends React.Component {
   }
 
   /**
-   * Functoin called on initial load it initialize state
+   * Function called on initial load it initialize state
    */
   componentDidMount = async() => {
 
@@ -204,6 +204,10 @@ class Calendar extends React.Component {
     })
   }
 
+  /**
+   * Search for clients in the multiselect form for the GCal reminders
+   * @param {event} e : form change event
+   */
   search = (e) => {
     var newOptions = []
     this.state.allOptions.forEach(str => {

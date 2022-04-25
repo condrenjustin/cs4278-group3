@@ -1,6 +1,6 @@
 /**
  * Group 3
- * Homework 3
+ * 
  * Grant Bowlds (grant.f.bowlds@vanderbilt.edu) 
  * Donny Carr (donovan.e.carr@vanderbilt.edu) 
  * Justin Condren (justin.l.condren@vanderbilt.edu)
@@ -20,6 +20,9 @@ class DataDashboard extends React.Component {
         provided: 0
     }
 
+    /**
+     * Function called on initial load it initialize state
+     */
     componentDidMount = async() => {
         var x, y;
         // Airtable api call to get most recent entry
@@ -54,6 +57,10 @@ class DataDashboard extends React.Component {
             });
     }
 
+    /**
+     * Renders the page
+     * @returns the page info to render
+     */
     render(){
 
         return(
